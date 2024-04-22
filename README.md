@@ -1,4 +1,4 @@
-# Expense-Tracker
+# Expense Tracker
 
 It is an expense tracker app, created using MERN Stack.
 
