@@ -1,31 +1,9 @@
-# Expense Tracker (MERN)
+## Expense Tracker App
 
 > Full stack expense tracker
 
-## Usage
+# A Full stack website for tracking payments, transaction and savings done. It also shows the balance and past transactions.
+# It is made using MERN Stack and it can perform CRUD operations.
 
-```
-change config.env file in config folder
-```
-
-```
- npm install
- cd client npm install
- cd ..
- 
- # Run front and backend
- npm run dev
- 
- # Backend only
- npm run server
- 
- # Frontend only
- npm run client
- 
- # Build client
- cd client
- npm run build
- 
- # Prod
- npm start
-```
+Screenshot below:
+![expensetracker](https://github.com/piyushverma2001/Expense_Tracker/assets/76246211/87efa4a1-ca7d-4833-a495-63794062c6bc)
