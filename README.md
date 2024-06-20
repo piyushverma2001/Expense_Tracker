@@ -2,7 +2,7 @@
 
 > Full stack expense tracker
 
-### A Full stack website for tracking payments, transaction and savings done. It also shows the balance and past transactions.
+### A Full stack website for tracking payments, transactions and savings done by the user. It also shows the balance and past transactions.
 ### It is made using MERN Stack and it can perform CRUD operations.
 
 ### Screenshot below:
