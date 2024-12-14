@@ -1,22 +1,16 @@
 import { resolve, dirname } from "path";
 import express, { json } from 'express';
-//import config from 'dotenv';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import { fileURLToPath } from "url";
+import transactions from './routes/transactions.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-//configDotenv.config()
 dotenv.config({ path: "./config/config.env" });
 
-//config({ path: './config/config.env' });
-//require("dotenv").config({ path: "./config/config.env" });
-
 connectDB();
-
-import transactions from './routes/transactions.js';
 
 const app = express();
 

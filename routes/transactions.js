@@ -1,6 +1,7 @@
 import Router from 'express';
-const router = Router();
 import { getTransactions, addTransaction, deleteTransaction } from '../controllers/transactions.js';
+
+const router = Router();
 
 router
   .route('/')

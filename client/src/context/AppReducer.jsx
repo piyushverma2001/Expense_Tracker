@@ -14,6 +14,16 @@ export const AppReducer = (state, action) => {
         ),
       };
     case "ADD_TRANSACTION":
+      if (
+        !action.payload._id ||
+        !action.payload.text ||
+        action.payload.amount === undefined
+      ) {
+        return {
+          ...state,
+          error: "Invalid transaction data",
+        };
+      }
       return {
         ...state,
         transactions: [...state.transactions, action.payload],
@@ -22,6 +32,16 @@ export const AppReducer = (state, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case "SET_LOADING":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "CLEAR_ERROR":
+      return {
+        ...state,
+        error: null,
       };
     default:
       return state;

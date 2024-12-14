@@ -2,8 +2,9 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <h2>
-      Expense Tracker App
-    </h2>
-  )
-}
+    <header>
+      <h1 className="header-title">Expense Tracker App</h1>
+    </header>
+  );
+};
+
