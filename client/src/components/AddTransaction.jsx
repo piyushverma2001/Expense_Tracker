@@ -9,17 +9,18 @@ export const AddTransaction = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!text || !amount) {
-      alert("Please fill in both fields");
+    if (!text.trim()) {
+      alert("Description is required.");
       return;
     }
 
-    const newTransaction = {
-      text,
-      amount: parseFloat(amount) || 0,
-    };
+    const amountValue = parseFloat(amount);
+    if (isNaN(amountValue) || amountValue === 0) {
+      alert("Amount must be a non-zero number.");
+      return;
+    }
 
-    addTransaction(newTransaction);
+    addTransaction({ text, amount: amountValue });
 
     setText("");
     setAmount("");
@@ -32,8 +33,11 @@ export const AddTransaction = () => {
         <div className="form-control">
           <label htmlFor="text">Text</label>
           <input
+            id="text"
             type="text"
+            maxLength="50"
             value={text}
+            required
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text..."
           />
@@ -44,7 +48,10 @@ export const AddTransaction = () => {
             (Negative - Expense, Positive - Income)
           </label>
           <input
+            id="amount"
             type="number"
+            step="0.01"
+            required
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter amount..."

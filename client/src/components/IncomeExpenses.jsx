@@ -3,20 +3,21 @@ import { GlobalContext } from "../context/GlobalState.jsx";
 import { numberWithCommas } from "../utils/format.js";
 
 export const IncomeExpenses = () => {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions = [] } = useContext(GlobalContext);
 
-  const amounts = transactions.map((transaction) => transaction.amount);
+  const amounts = transactions.map((t) => Number(t.amount));
 
-  let income = 0;
-  let expense = 0;
-
-  amounts.forEach((item) => {
-    if (item > 0) {
-      income += item;
-    } else {
-      expense += item;
-    }
-  });
+  const { income, expense } = amounts.reduce(
+    (acc, val) => {
+      if (val > 0) {
+        acc.income += val;
+      } else {
+        acc.expense += val;
+      }
+      return acc;
+    },
+    { income: 0, expense: 0 }
+  );
 
   const formattedIncome = income > 0 ? income.toFixed(2) : "0.00";
   const formattedExpense = expense < 0 ? (-expense).toFixed(2) : "0.00";

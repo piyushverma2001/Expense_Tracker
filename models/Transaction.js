@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const TransactionSchema = new Schema(
   {
-    description: {
+    text: {
       type: String,
       trim: true,
       required: [true, "Please add a description for the transaction"],

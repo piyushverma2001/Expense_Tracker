@@ -5,6 +5,7 @@ export const AppReducer = (state, action) => {
         ...state,
         loading: false,
         transactions: action.payload,
+        error: null,
       };
     case "DELETE_TRANSACTION":
       return {
@@ -44,6 +45,7 @@ export const AppReducer = (state, action) => {
         error: null,
       };
     default:
+      console.warn(`Unhandled action type: ${action.type}`);
       return state;
   }
 };

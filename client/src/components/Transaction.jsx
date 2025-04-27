@@ -13,9 +13,13 @@ export const Transaction = ({ transaction }) => {
       <button
         onClick={() => deleteTransaction(transaction._id)}
         className="delete-btn"
-        aria-label={`Delete ${transaction.text} transaction`}
       >
-        X
+        <img
+          src="/delete.png"
+          alt="Delete"
+          width="18"
+          height="18"
+        />
       </button>
     </li>
   );
