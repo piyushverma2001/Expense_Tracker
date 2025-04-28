@@ -5,7 +5,7 @@ const TransactionSchema = new Schema(
     text: {
       type: String,
       trim: true,
-      required: [true, "Please add a description for the transaction"],
+      required: [true, "Please add type of transaction."],
     },
     amount: {
       type: Number,

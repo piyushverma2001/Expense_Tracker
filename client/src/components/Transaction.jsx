@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState.jsx";
 import { numberWithCommas } from "../utils/format.js";
 import PropTypes from "prop-types";
+import deleteIcon from "../assets/delete.png";
 
 export const Transaction = ({ transaction }) => {
   const { deleteTransaction } = useContext(GlobalContext);
@@ -14,12 +15,7 @@ export const Transaction = ({ transaction }) => {
         onClick={() => deleteTransaction(transaction._id)}
         className="delete-btn"
       >
-        <img
-          src="/delete.png"
-          alt="Delete"
-          width="18"
-          height="18"
-        />
+        <img src={deleteIcon} alt="Delete" width="18" height="18" />
       </button>
     </li>
   );

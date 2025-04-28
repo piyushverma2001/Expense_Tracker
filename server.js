@@ -1,25 +1,27 @@
-import express, { json } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import cors from "cors";
-import connectDB from './config/db.js';
+import connectMongoDB from './config/db.js';
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import transactions from './routes/transactions.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const app = express();
 app.use(cors());
 app.use(express.json());
-dotenv.config({ path: "./config/config.env" });
-const __dirname = dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: "./config/.env" });
+const PORT = process.env.PORT || 5000;
 
-connectDB().catch((err) => {
+connectMongoDB().catch((err) => {
   console.error("Database connection failed:", err);
   process.exit(1);
 });
 
-app.use('/api/v1/transactions', transactions);
+app.use('/api/transactions', transactions);
 
-app.use((err, req, res, next) => {
+app.use((err, res) => {
   console.error(err.stack);
   res.status(500).json(
     {
@@ -36,18 +38,11 @@ if(process.env.NODE_ENV === 'production') {
   );
 }
 
-const PORT = process.env.PORT || 5000;
-
 const server = app.listen(PORT, () =>
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );
 
-process.on("SIGINT", () => {
-  console.log("SIGINT received. Shutting down gracefully");
-  server.close(() => process.exit(0));
-});
-
 process.on("SIGTERM", () => {
-  console.log("SIGTERM received. Shutting down gracefully");
+  console.log("Shutting down gracefully");
   server.close(() => process.exit(0));
 });

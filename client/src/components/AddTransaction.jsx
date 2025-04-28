@@ -10,7 +10,7 @@ export const AddTransaction = () => {
     e.preventDefault();
 
     if (!text.trim()) {
-      alert("Description is required.");
+      alert("Item is required.");
       return;
     }
 
@@ -28,7 +28,7 @@ export const AddTransaction = () => {
 
   return (
     <>
-      <h3>Add a new transaction</h3>
+      <h3>Add new transaction</h3>
       <form onSubmit={onSubmit}>
         <div className="form-control">
           <label htmlFor="text">Text</label>
@@ -38,8 +38,9 @@ export const AddTransaction = () => {
             maxLength="50"
             value={text}
             required
+            autoComplete="off"
             onChange={(e) => setText(e.target.value)}
-            placeholder="Enter text..."
+            placeholder="Enter item..."
           />
         </div>
         <div className="form-control">

@@ -1,6 +1,6 @@
 import TransactionModel from "../models/Transaction.js";
 
-export async function getTransactions(req, res, next) {
+export async function getTransactions(req, res) {
   try {
     const transactions = await TransactionModel.find();
 
@@ -18,10 +18,8 @@ export async function getTransactions(req, res, next) {
   }
 }
 
-export async function addTransaction(req, res, next) {
+export async function addTransaction(req, res) {
   try {
-    const { text, amount } = req.body;
-
     const transaction = await TransactionModel.create(req.body);
 
     return res.status(201).json({
@@ -46,7 +44,7 @@ export async function addTransaction(req, res, next) {
   }
 }
 
-export async function deleteTransaction(req, res, next) {
+export async function deleteTransaction(req, res) {
   try {
     const transaction = await TransactionModel.findByIdAndDelete(req.params.id);
 
@@ -57,11 +55,9 @@ export async function deleteTransaction(req, res, next) {
       });
     }
 
-    // await transaction.remove();
-
     return res.status(200).json({
       success: true,
-      data: {},
+      data: "Transaction deleted!",
     });
   } catch (err) {
     console.error(err);

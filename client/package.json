@@ -1,7 +1,6 @@
 {
   "name": "expense_tracker",
   "version": "0.1.0",
-  "homepage": "https://piyushverma2001.github.io/Expense_Tracker",
   "private": true,
   "type": "module",
   "proxy": "http://localhost:5000",
@@ -39,8 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
 }
