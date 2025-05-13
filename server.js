@@ -21,13 +21,9 @@ connectMongoDB().catch((err) => {
 
 app.use('/api/transactions', transactions);
 
-app.use((err, res) => {
+app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json(
-    {
-      success: false,
-      error: "Server Error"
-    });
+  res.status(500).json({ success: false, error: "Server Error" });
 });
 
 if(process.env.NODE_ENV === 'production') {
