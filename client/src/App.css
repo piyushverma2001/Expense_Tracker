@@ -140,3 +140,15 @@ input[type='number'] {
 .negative {
   color: red;
 }
+
+@media (max-width: 768px) {
+  #root {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    padding: 5px;
+  }
+}
